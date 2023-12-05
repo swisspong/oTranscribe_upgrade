@@ -1,7 +1,8 @@
 const $ = require('jquery');
 const Mustache = require('mustache');
 const toMarkdown = require('to-markdown');
-const template = require('raw-loader!../../html/export-panel.ms');
+// const template = require('raw-loader!../../html/export-panel.ms');
+const template = require('../../html/export-panel.ms?raw');
 import googleDriveSetup from './export-formats/google-drive';
 import { getPlayer } from './player/player';
 const sanitizeHtml = require('sanitize-html');
@@ -125,6 +126,7 @@ export function exportSetup(){
     });
     
     $('.sbutton.export').click(function() {
+        console.log("button export")
         // document.querySelector('.container').innerHTML = downloadButtons;
         var origin = $('#icon-exp').offset();
         var right = parseInt( $('body').width() - origin.left + 25 );

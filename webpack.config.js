@@ -35,20 +35,62 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            cacheDirectory: true,
-            presets: [
-              "@babel/preset-env",
-              // "@babel/preset-stage-2"
-            ],
-            plugins: ["@babel/plugin-transform-react-jsx"],
-          },
-        },
+        use: ["babel-loader"],
       },
+      // {
+      //   test: /\.js$/,
+      //   exclude: /node_modules/,
+      //   use: {
+      //     loader: "babel-loader",
+      //     options: {
+      //       presets: ["@babel/preset-env", "@babel/preset-react"],
+      //       plugins: ["@babel/plugin-syntax-jsx"],
+      //     },
+      //   },
+      // },
+      // {
+      //   test: /\.jsx$/,
+      //   exclude: /node_modules/,
+      //   use: {
+      //     loader: "babel-loader",
+      //     options: {
+      //       presets: [
+      //         ["es2015", { loose: true }],
+      //         "stage-2",
+      //         ["@babel/preset-react", { pragma: "h" }],
+      //       ],
+      //       plugins: [],
+      //     },
+      //   },
+      // },
+
+      // {
+      //   test: /\.js$/, // Matches all .js files
+      //   exclude: /node_modules/, // Excludes files in node_modules
+      //   use: {
+      //     loader: "babel-loader",
+      //     options: {
+      //       // Inherit presets and plugins from .babelrc
+      //     },
+      //   },
+      // },
+      // {
+      //   test: /\.jsx?$/,
+      //   exclude: /node_modules/,
+      //   use: {
+      //     loader: "babel-loader",
+      //     options: {
+      //       cacheDirectory: true,
+      //       presets: [
+      //         "@babel/preset-env",
+      //         // "@babel/preset-stage-2"
+      //       ],
+      //       plugins: ["@babel/plugin-transform-react-jsx"],
+      //     },
+      //   },
+      // },
       // {
       //   test: /\.jsx?$/,
       //   exclude: /(node_modules|bower_components)/,
@@ -136,7 +178,14 @@ module.exports = {
           "sass-loader",
         ],
       },
+      {
+        resourceQuery: /raw/,
+        type: 'asset/source',
+      }
     ],
+  },
+  resolve: {
+    extensions: ["*", ".js", ".jsx"],
   },
   plugins: [
     // new ExtractTextPlugin("style.css"),,

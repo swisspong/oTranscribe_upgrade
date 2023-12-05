@@ -7,9 +7,11 @@ import defaultSettings from './defaults.json';
 export function getSettings() {
     const savedSettings = localStorageManager.getItem('oTranscribe-settings');
     let settings = Object.assign({}, defaultSettings);
+    console.log(savedSettings,settings)
     if (savedSettings) {
         settings = Object.assign({}, defaultSettings, savedSettings);
     }
+    console.log(settings)
     return settings;
 }
 
@@ -28,9 +30,15 @@ class Settings extends Component {
         this.state = getSettings();
     }
     componentDidUpdate(prevProps, prevState) {
+        console.log("DidUpdate",this.state)
         localStorageManager.setItem('oTranscribe-settings', this.state);
         refreshApp.keyboardShortcuts(this.state, prevState);
     }
+    // componentDidMount(prevProps, prevState){
+    //     localStorageManager.setItem('oTranscribe-settings', this.state);
+    //     refreshApp.keyboardShortcuts(this.state, prevState);
+    // }
+
     render() {
         const update = function(key, value) {
             this.setState({
@@ -50,11 +58,16 @@ class Settings extends Component {
                     reset={reset.bind(this, 'keyboardShortcuts')}
                     onChange={update.bind(this, 'keyboardShortcuts')}
                 />
+                {/* {showKeyboardShortcuts(this.state.keyboardShortcuts)} */}
             </div>
         );
     }
 }
 
+
 export function showSettings(el) {
-    render(<Settings />, el);    
+    //render(<Settings />, el); 
+    const component = h(Settings,null);
+
+    render(component,el);   
 }
