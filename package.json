@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.config.js --stats-children && make compile_static",
+    "build": "webpack --config webpack.config.js --stats-children && make build_prod",
     "watch": "webpack --watch --config webpack.config.js",
-    "start": "npm run build && webpack serve --open --config webpack.config.js"
+    "start": "npm run build && make build_dev && webpack serve --open --config webpack.config.js"
   },
   "keywords": [],
   "author": "",
