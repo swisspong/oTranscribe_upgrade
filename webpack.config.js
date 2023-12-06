@@ -7,7 +7,6 @@ const devMode = process.env.NODE_ENV !== "production";
 module.exports = {
   mode: "development",
   // mode: "production",
-  // entry: "./src/index.js",
   entry: {
     app: "./src/index.js",
     // Runtime code for hot module replacement
@@ -15,10 +14,6 @@ module.exports = {
     // Dev server client for web socket transport, hot and live reload logic
     client: "webpack-dev-server/client/index.js?hot=true&live-reload=true",
   },
-  // output: {
-  //   path: path.resolve(__dirname, "dist"),
-  //   filename: "bundle.js",
-  // },
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
@@ -26,8 +21,6 @@ module.exports = {
   },
   devServer: {
     static: "./dist",
-    // hot: true,
-    // Dev server client for web socket transport, hot and live reload logic
     hot: false,
     client: false,
   },
@@ -39,132 +32,10 @@ module.exports = {
         exclude: /node_modules/,
         use: ["babel-loader"],
       },
-      // {
-      //   test: /\.js$/,
-      //   exclude: /node_modules/,
-      //   use: {
-      //     loader: "babel-loader",
-      //     options: {
-      //       presets: ["@babel/preset-env", "@babel/preset-react"],
-      //       plugins: ["@babel/plugin-syntax-jsx"],
-      //     },
-      //   },
-      // },
-      // {
-      //   test: /\.jsx$/,
-      //   exclude: /node_modules/,
-      //   use: {
-      //     loader: "babel-loader",
-      //     options: {
-      //       presets: [
-      //         ["es2015", { loose: true }],
-      //         "stage-2",
-      //         ["@babel/preset-react", { pragma: "h" }],
-      //       ],
-      //       plugins: [],
-      //     },
-      //   },
-      // },
-
-      // {
-      //   test: /\.js$/, // Matches all .js files
-      //   exclude: /node_modules/, // Excludes files in node_modules
-      //   use: {
-      //     loader: "babel-loader",
-      //     options: {
-      //       // Inherit presets and plugins from .babelrc
-      //     },
-      //   },
-      // },
-      // {
-      //   test: /\.jsx?$/,
-      //   exclude: /node_modules/,
-      //   use: {
-      //     loader: "babel-loader",
-      //     options: {
-      //       cacheDirectory: true,
-      //       presets: [
-      //         "@babel/preset-env",
-      //         // "@babel/preset-stage-2"
-      //       ],
-      //       plugins: ["@babel/plugin-transform-react-jsx"],
-      //     },
-      //   },
-      // },
-      // {
-      //   test: /\.jsx?$/,
-      //   exclude: /(node_modules|bower_components)/,
-      //   loader: "babel-loader",
-      //   query: {
-      //     cacheDirectory: true,
-      //     presets: ["es2015", "stage-2"],
-      //   },
-      // },
-      // {
-      //   test: /\.scss$/i,
-      //   use: ["style-loader", "css-loader","scss-loader"],
-      // },
-      // {
-      //   test: /\.scss$/i,
-      //   use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
-      // },
-      // {
-      //   test: /\.s[ac]ss$/i,
-      //   use: [
-      //     // Creates `style` nodes from JS strings
-      //     "style-loader",
-      //     // Translates CSS into CommonJS
-      //     "css-loader",
-      //     // Compiles Sass to CSS
-      //     "sass-loader",
-      //   ],
-      // },
-      // {
-      //   test: /\.s[ac]ss$/i,
-      //   use: [
-      //     "style-loader",
-      //     {
-      //       loader: "css-loader",
-      //       options: {
-      //         sourceMap: true,
-      //       },
-      //     },
-      //     {
-      //       loader: "sass-loader",
-      //       options: {
-      //         sourceMap: true,
-      //       },
-      //     },
-      //   ],
-      // },
-      // {
-      //   test: /\.scss$/,
-      //   use: [
-      //     MiniCssExtractPlugin.loader, // Extracts CSS to a separate file
-      //     "css-loader", // Transpiles CSS
-      //     "sass-loader", // Compiles Sass to CSS
-      //   ],
-      // },
       {
         test: /\.json$/,
-        // use: "json-loader",
         type: "json",
       },
-      // {
-      //   test: /\.jsx?$/,
-      //   exclude: /(node_modules|bower_components)/,
-      //   use: {
-      //     loader: "babel-loader",
-      //     options: {
-      //       cacheDirectory: true,
-      //       presets: ["@babel/preset-env", "@babel/preset-stage-2"],
-      //     },
-      //   },
-      // },
-      // {
-      //   test: /\.(s(a|c)ss)$/,
-      //   use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
-      // },
       {
         test: /\.scss$/,
         use: [

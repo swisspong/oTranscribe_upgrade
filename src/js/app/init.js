@@ -78,9 +78,7 @@ export default function init() {
       viewController.set("about");
     }
   });
-  $(".settings-button").click(() => {
-    console.log("mouse down");
-    console.log("viewController.is('settings')", viewController.is("settings"));
+  $(".settings-button").mousedown(() => {
     if (viewController.is("settings")) {
       viewController.set("editor");
     } else {
